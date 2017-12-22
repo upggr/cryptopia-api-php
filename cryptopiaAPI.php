@@ -3,6 +3,8 @@ include 'exchange.php';
 
 class Cryptopia extends Exchange{
     
+   
+    
    public function __construct($priv, $pub) {
       $this->privateKey = $priv;
       $this->publicKey = $pub;
