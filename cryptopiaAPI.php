@@ -5,24 +5,9 @@ class Cryptopia extends Exchange{
     
    
     
-   public function __construct($priv, $pub) {
+public function __construct($priv, $pub) {
       $this->privateKey = $priv;
-      $this->publicKey = $pub;
-
-      $result = json_decode($this->apiCall("GetBalance", array( 'Currency'=> 'BTC' )), true); // There is a bug in the API if you send no parameters it will return Success:true Error: Market not found.
-         // Array
-         // (
-         //    [Success] => 1
-         //    [Message] =>
-         //    [Data] =>
-         //    [Error] => Market not found.
-         // )
-      // print_r($result);
-      if( $result['Success'] != "true" ) {
-         throw new Exception("Can't Connect to Cryptopia, Error: " . $result['Error'] );
-         return false;
-      }
-      return true;
+      $this->publicKey = $pub;    
    }
 
    private function apiCall($method, array $req = array()) {
