@@ -23,7 +23,7 @@ public function __construct($priv, $pub) {
          curl_setopt($ch, CURLOPT_URL, $url );
       } elseif ( in_array( $method, $private_set ) ) {
          $url = "https://www.cryptopia.co.nz/Api/" . $method;
-         $nonce = explode(' ', microtime())[1];
+         $nonce = base64_encode(random_bytes(128));
          $post_data = json_encode( $req );
          $m = md5( $post_data, true );
          $requestContentBase64String = base64_encode( $m );
